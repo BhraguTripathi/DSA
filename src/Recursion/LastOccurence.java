@@ -2,15 +2,15 @@ package Recursion;
 
 import java.util.Scanner;
 
-public class FirstOccurence {
-    public static int firstOcuurence(int arr[],int key,int i){
-        if(i==arr.length){
+public class LastOccurence {
+    public static int lastOccurence(int arr[],int key,int i){
+        if(i<0){
             return -1;
         }
         if(arr[i]==key){
             return i;
         }
-        return firstOcuurence(arr,key,i+1);
+        return lastOccurence(arr,key,i-1);
     }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
@@ -20,7 +20,6 @@ public class FirstOccurence {
             arr[i]=sc.nextInt();
         }
         int key=sc.nextInt();
-        int i=0;
-        System.out.println(firstOcuurence(arr,key,i));
+        System.out.println(lastOccurence(arr,key,n-1));
     }
 }
