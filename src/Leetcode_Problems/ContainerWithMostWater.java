@@ -17,6 +17,26 @@ public class ContainerWithMostWater {
         }
         return maxWater;
     }
+
+    //2 Pointer Approach -- O(n)
+    public static int storeWater2PointerApproach(ArrayList<Integer> height){
+        int maxWater=0;
+        int leftPointer=0;
+        int rightPointer=height.size()-1;
+        while(leftPointer<rightPointer){
+            int h=Math.min(height.get(leftPointer),height.get(rightPointer));
+            int w=rightPointer-leftPointer;
+            int currWater=h*w;
+            maxWater=Math.max(maxWater,currWater);
+
+            if(height.get(leftPointer)<height.get(rightPointer)){
+                leftPointer++;
+            }else{
+                rightPointer--;
+            }
+        }
+        return maxWater;
+    }
     public static void main(String[] args) {
         ArrayList<Integer> height=new ArrayList<>();
         height.add(1);
@@ -30,5 +50,6 @@ public class ContainerWithMostWater {
         height.add(7);
 
         System.out.println(storeWaterBruteForce(height));
+        System.out.println(storeWater2PointerApproach(height));
     }
 }
