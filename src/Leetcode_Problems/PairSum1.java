@@ -2,7 +2,7 @@ package Leetcode_Problems;
 
 import java.util.ArrayList;
 
-public class PairSum1 {
+public class PairSum1 { //Sorted ArrayList
 
     //Brute Force -- O(n^2)
     public static boolean pairSum1BruteForce(ArrayList<Integer> list,int target){
