@@ -11,10 +11,12 @@ public class AddingLinkedList {
     }
     public static Node head;
     public static Node tail;
+    public static int size;
 
     public void addFirst(int data){    //adding from first in linked list -- O(1)
         //step: 1 -- create newNode
         Node newNode=new Node(data);
+        size++;
         //if linked list is empty
         if(head==null){
             head=tail=newNode;
@@ -29,6 +31,7 @@ public class AddingLinkedList {
     public void addLast(int data){     //adding from last in linked list -- O(1)
         //step: 1 -- create new node
         Node newNode=new Node(data);
+        size++;
         //if linked list is empty
         if(tail==null){
             tail=head=newNode;
@@ -40,7 +43,25 @@ public class AddingLinkedList {
         tail=newNode;
     }
 
-    public void printLinkedList(){
+    public void addAtIndex(int data,int index){  // adding in given index of linked list -- O(n)
+        if(index==0){
+            addFirst(data);
+            return;
+        }
+        Node newNode=new Node(data);
+        size++;
+        Node temp=head;
+        int i=0;
+        while(i<index-1){
+            temp=temp.next;
+            i++;
+        }
+
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+
+    public void printLinkedList(){  //O(n)
         if(head==null){
             System.out.println("Linked List is empty");
             return;
@@ -64,5 +85,8 @@ public class AddingLinkedList {
         linkedList.printLinkedList();
         linkedList.addLast(5);
         linkedList.printLinkedList();
+        linkedList.addAtIndex(9,2);
+        linkedList.printLinkedList();
+        System.out.println(linkedList.size);
     }
 }
