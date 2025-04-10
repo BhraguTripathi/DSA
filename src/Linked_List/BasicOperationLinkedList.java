@@ -1,6 +1,6 @@
 package Linked_List;
 
-public class AddingLinkedList {
+public class BasicOperationLinkedList {
     public static class Node{
         int data;
         Node next;
@@ -61,6 +61,44 @@ public class AddingLinkedList {
         temp.next=newNode;
     }
 
+    public int removeFirst(){    //remove the head of linked list
+        if(size==0){
+            System.out.println("Linked List is empty");
+            return Integer.MIN_VALUE;
+        }else if(size==1){
+            int value=head.data;
+            head=tail=null;
+            size--;
+            return value;
+        }
+        int value=head.data;
+        head=head.next;
+        size--;
+        return value;
+    }
+
+    public int removeLast(){    //remove the last element of linked list
+        if(size==0){
+            System.out.println("Linked List is empty");
+        }else if(size==1){
+            int value=head.data;
+            head=tail=null;
+            size--;
+            return value;
+        }
+
+        //prev=size-2
+        Node prev=head;
+        for(int i=0;i<size-2;i++){
+            prev=prev.next;
+        }
+        int value=prev.next.data;
+        prev.next=null;
+        tail=prev;
+        size--;
+        return value;
+    }
+
     public void printLinkedList(){  //O(n)
         if(head==null){
             System.out.println("Linked List is empty");
@@ -75,7 +113,7 @@ public class AddingLinkedList {
     }
 
     public static void main(String[] args) {
-        AddingLinkedList linkedList=new AddingLinkedList();
+        BasicOperationLinkedList linkedList=new BasicOperationLinkedList();
         linkedList.printLinkedList();
         linkedList.addFirst(1);
         linkedList.printLinkedList();
@@ -88,5 +126,9 @@ public class AddingLinkedList {
         linkedList.addAtIndex(9,2);
         linkedList.printLinkedList();
         System.out.println(linkedList.size);
+        linkedList.removeFirst();
+        linkedList.printLinkedList();
+        linkedList.removeLast();
+        linkedList.printLinkedList();
     }
 }
