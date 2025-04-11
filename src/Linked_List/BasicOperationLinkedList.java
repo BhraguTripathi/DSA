@@ -112,23 +112,51 @@ public class BasicOperationLinkedList {
         System.out.println("null");
     }
 
+    public int helperRecursiveSearch(Node head,int key){
+        if(head==null){
+            return -1;
+        }
+        if(head.data==key){
+            return 0;
+        }
+        int index=helperRecursiveSearch(head.next,key);
+        if(index==-1){
+            return -1;
+        }
+        return index+1;
+    }
+
+    public int recursiveSearch(int key){
+        return helperRecursiveSearch(head,key);
+    }
+
+    public int iterativeSearch(int key){   //this is iterative way to search in linked list -- O(n)
+        Node temp=head;
+        int i=0;
+        while(temp!=null){
+            if(temp.data==key){
+                return i;
+            }
+            temp=temp.next;
+            i++;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         BasicOperationLinkedList linkedList=new BasicOperationLinkedList();
-        linkedList.printLinkedList();
         linkedList.addFirst(1);
-        linkedList.printLinkedList();
         linkedList.addFirst(2);
-        linkedList.printLinkedList();
         linkedList.addLast(4);
-        linkedList.printLinkedList();
         linkedList.addLast(5);
-        linkedList.printLinkedList();
         linkedList.addAtIndex(9,2);
         linkedList.printLinkedList();
         System.out.println(linkedList.size);
-        linkedList.removeFirst();
-        linkedList.printLinkedList();
-        linkedList.removeLast();
-        linkedList.printLinkedList();
+//        linkedList.removeFirst();
+//        linkedList.printLinkedList();
+//        linkedList.removeLast();
+//        linkedList.printLinkedList();
+        System.out.println(linkedList.iterativeSearch(5));
+        System.out.println(linkedList.recursiveSearch(4));
     }
 }
