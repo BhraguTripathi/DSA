@@ -143,6 +143,19 @@ public class BasicOperationLinkedList {
         return -1;
     }
 
+    public void reverseLinkedList(){  //reverse of linked list -- O(n)
+        Node prev=null;
+        Node curr=tail=head;
+        Node next;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
+    }
+
     public static void main(String[] args) {
         BasicOperationLinkedList linkedList=new BasicOperationLinkedList();
         linkedList.addFirst(1);
@@ -151,12 +164,14 @@ public class BasicOperationLinkedList {
         linkedList.addLast(5);
         linkedList.addAtIndex(9,2);
         linkedList.printLinkedList();
-        System.out.println(linkedList.size);
+//        System.out.println(linkedList.size);
 //        linkedList.removeFirst();
 //        linkedList.printLinkedList();
 //        linkedList.removeLast();
 //        linkedList.printLinkedList();
-        System.out.println(linkedList.iterativeSearch(5));
-        System.out.println(linkedList.recursiveSearch(4));
+//        System.out.println(linkedList.iterativeSearch(5));
+//        System.out.println(linkedList.recursiveSearch(4));
+        linkedList.reverseLinkedList();
+        linkedList.printLinkedList();
     }
 }
