@@ -16,7 +16,7 @@ public class DetectLoopOrCycle {
         public static boolean isCycle(){  //Floyd's Cycle Finding Algorithm
             Node slow=head;
             Node fast=head;
-            while(fast!=null || fast.next!=null){
+            while(fast!=null && fast.next!=null){
                 slow=slow.next;
                 fast=fast.next.next;
                 if(slow==fast){
@@ -74,6 +74,6 @@ public class DetectLoopOrCycle {
             //detectLoopOrCycle.printLinkedList();
             System.out.println(isCycle());
             detectLoopOrCycle.removeLoopCycle();
-            //System.out.println(isCycle());
+            System.out.println(isCycle());
         }
 }
