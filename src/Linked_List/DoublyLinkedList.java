@@ -45,6 +45,20 @@ public class DoublyLinkedList {
         size--;
         return value;
     }
+    public void reverse(){
+        Node current=head;
+        Node prev =null;
+        Node next;
+        while(current!=null){
+            next=current.next;
+            current.next= prev;
+            current.prev=next;
+
+            prev=current;
+            current=next;
+        }
+        head=prev;
+    }
 
     public void printDoublyLinkedList(){
         Node temp=head;
@@ -63,9 +77,11 @@ public class DoublyLinkedList {
         doublyLinkedList.addFirst(2);
         doublyLinkedList.addFirst(1);
         doublyLinkedList.printDoublyLinkedList();
-        System.out.println(size);
-        System.out.println(doublyLinkedList.removeFirst());
+        //System.out.println(size);
+        //System.out.println(doublyLinkedList.removeFirst());
+        //doublyLinkedList.printDoublyLinkedList();
+        //System.out.println(size);
+        doublyLinkedList.reverse();
         doublyLinkedList.printDoublyLinkedList();
-        System.out.println(size);
     }
 }
