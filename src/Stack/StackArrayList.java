@@ -14,12 +14,18 @@ public class StackArrayList {
         }
         //pop -- O(1)
         public static int pop(){
+            if(isEmpty()){
+                return -1;
+            }
             int top =arrayList.get(arrayList.size()-1);
             arrayList.remove(arrayList.size()-1);
             return top;
         }
         //peek -- O(1)
         public static int peek(){
+            if(isEmpty()){
+                return -1;
+            }
             int top =arrayList.get(arrayList.size()-1);
             return top;
         }
